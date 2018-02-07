@@ -11,23 +11,37 @@ export class ConsumptionComponent implements OnInit {
   deptChoices = [];
   arrChoices = [];
   flightNumChoices = [];
+  flightCount;
+  initialCount;
+  finalCount;
+  consumption;
 
   constructor(private cservice: ConsumptionService) { }
 
   ngOnInit() {
-    const rawdata = this.cservice.getRawData();
+
     this.cservice.getDeptTypes().subscribe((data) => {
       console.log(Array.from(data.keys()));
       this.deptChoices = Array.from(data.keys());
     });
+
     this.cservice.getArrTypes().subscribe((data) => {
       console.log(Array.from(data.keys()));
       this.arrChoices = Array.from(data.keys());
     });
+
     this.cservice.getFlightNumTypes().subscribe((data) => {
       console.log(Array.from(data.keys()));
       this.flightNumChoices = Array.from(data.keys());
     });
+
+    this.cservice.getOverviewFigures().subscribe((data) => {
+      this.flightCount = data["flightNum"];
+      this.initialCount = data["initialCount"];
+      this.finalCount = data["finalCount"];
+      this.consumption = data["consumption"];
+    });
+
   }
 
 }

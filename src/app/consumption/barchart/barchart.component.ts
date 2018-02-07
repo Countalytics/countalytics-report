@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import * as d3 from 'd3';
 import {Chart} from 'chart.js';
+import { ConsumptionService } from '../../consumption.service';
 
 @Component({
   selector: 'app-barchart',
@@ -9,27 +9,47 @@ import {Chart} from 'chart.js';
 })
 export class BarchartComponent implements OnInit, AfterViewInit {
 
+  itemList = ["Avion", "Bacardi", "Bailey's", "Bombay", "Canadian Club",
+  "Courvoisier", "Dewars", "Finlandia", "Grey Goose", "JD - Single Barrel",
+  "JD - Honey", "JD", "Macallan", "Woodford"];
+
+  initialList = [];
+  finalList = [];
+  consumptionList = [];
+
+  constructor(private cservice: ConsumptionService) { }
+
   ngOnInit() {
-
+    this.cservice.getItemCount().subscribe((data) => {
+      console.log(data);
+      for (let item of this.itemList) {
+          this.initialList.push(data[item]["initial"]);
+          this.finalList.push(data[item]["final"]);
+          this.consumptionList.push(data[item]["consumption"]);
+      }
+      this.renderChart();
+      console.log(this.finalList);
+    });
   }
+  ngAfterViewInit() {}
 
-  ngAfterViewInit() {
+  renderChart() {
     let ctx2 = document.getElementById("walkChart");
     var walkChart = new Chart(ctx2, {
       type: 'bar',
       data: {
         datasets: [{
           label: 'Initial Inventory Count',
-          data: [41, 66, 49, 72, 61,41, 66, 49, 72, 61],
+          data: this.initialList,
           backgroundColor: "#00b862"
         }, {
           label: 'Final Inventory Count',
-          data: [21, 46, 39, 52, 41,11, 36, 29, 42, 21],
+          data: this.finalList,
           backgroundColor: "#2196f3",
           type: 'bar'
         }, {
-          label: 'Consumption %',
-          data: [50,35,46,49,71,50,35,46,49,71],
+          label: 'Consumption',
+          data: this.consumptionList,
           type: 'line',
           borderColor: '#ff5722',
           backgroundColor: 'rgba(255, 87, 34, 0.1)'
@@ -37,18 +57,7 @@ export class BarchartComponent implements OnInit, AfterViewInit {
         }],
 
         // These labels appear in the legend and in the tooltips when hovering different arcs
-        labels: [
-        'Grey Goose',
-        'Barcadi',
-        'Dewars',
-        'JD',
-        'Woodford',
-        'Bombay',
-        'Avion',
-        'Finlandia',
-        'Baileys',
-        'Canadian Club'
-      ]
+        labels: this.itemList
     },
     options: {
       title: {

@@ -1,4 +1,4 @@
-<div class="container-fluid" class="settings-bar center-align">
+<div class="container-fluid" class="settings-bar">
   <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-10">
@@ -29,8 +29,6 @@
 </div>
 </div>
 </div>
-
-
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-1">
@@ -54,36 +52,36 @@
       <div class="container-fluid center-align">
         <div class="row">
           <div class="col-md-3">
-            <div class="card">
+            <div class="card" *ngIf="flightCount">
               <div class="card-block">
-                <h2>2</h2>
-                Flight Data Points
+                <h2>{{ flightCount }}</h2>
+                No. of Flight(s)
                 <br /><br />
               </div>
             </div>
           </div>
           <div class="col-md-3">
-            <div class="card" >
+            <div class="card" *ngIf="initialCount">
               <div class="card-block">
-                <h2 style="color: #00b862;">40</h2>
+                <h2 style="color: #00b862;">{{ initialCount }}</h2>
                 Initial Count
                 <br /><br />
               </div>
             </div>
           </div>
           <div class="col-md-3">
-            <div class="card">
+            <div class="card" *ngIf="finalCount">
               <div class="card-block">
-                <h2 style="color: #2196f3;">30</h2>
+                <h2 style="color: #2196f3;">{{ finalCount }}</h2>
                 Final Count
                 <br /><br />
               </div>
             </div>
           </div>
           <div class="col-md-3">
-            <div class="card">
+            <div class="card" *ngIf="consumption">
               <div class="card-block">
-                <h2 style="color: #ff5722;">25%</h2>
+                <h2 style="color: #ff5722;">{{ consumption }}%</h2>
                 Consumption
                 <br /><br />
               </div>
@@ -98,7 +96,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-block" style="height: 500px;">
-                <h4 class="card-title">Consumption % by Brand</h4>
+                <h4 class="card-title">Consumption Count by Brand</h4>
                 <hr />
                 <app-barchart class="center-align"></app-barchart>
               </div>
@@ -106,7 +104,7 @@
           </div>
         </div>
       </div>
-
+<!--
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12">
@@ -114,12 +112,12 @@
               <div class="card-block" style="height: 400px;">
                 <h4 class="card-title">Consumption Data</h4>
                 <hr />
-              
+
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <div class="container-fluid">
         <div class="row">
