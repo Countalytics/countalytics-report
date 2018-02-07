@@ -45,14 +45,15 @@ hr {
 }
 
 .settings-bar {
-  overflow: hidden;
   padding-top: 80px;
   padding-bottom: 20px;
-  background-color: #C92100;
+  background-color:#A9B6BE;
   color: white;
   border-bottom: 1px solid #D8D8D8;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 89;
+  /* position: fixed; */
 }
+
+/* .ng-select-dropdown, .ng-select-dropdown-outer, .ng-option {
+  position: fixed;
+  width: 100%;
+} */

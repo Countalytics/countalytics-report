@@ -5,25 +5,30 @@
       <div class="container-fluid">
         <div class='row'>
           <div class="col-md-3">
-            <!-- <input type="text" placeholder="Sort by"/> -->
-            <span class="filters">Sort By</span>
+            <ng-select [items]="items" placeholder="Sort By"
+           [(ngModel)]="sort">
+         </ng-select>
           </div>
           <div class="col-md-3">
-            <span class="filters">Flight To</span>
+            <ng-select [items]="deptChoices" placeholder="Flight From"
+           [(ngModel)]="dept">
+         </ng-select>
           </div>
           <div class="col-md-3">
-            <span class="filters">Flight From</span>
+            <ng-select [items]="arrChoices" placeholder="Flight To"
+           [(ngModel)]="arr">
+         </ng-select>
           </div>
           <div class="col-md-3">
-            <span class="filters">Flight No.</span>
+            <ng-select [items]="flightNumChoices" placeholder="Flight No."
+           [(ngModel)]="flightNum">
+         </ng-select>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-<br /><br /><br /><br /><br />
 
 
 <div class="container-fluid">

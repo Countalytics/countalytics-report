@@ -11,6 +11,9 @@ import { AboutComponent } from "./about/about.component";
 import { ConsumptionComponent } from './consumption/consumption.component';
 import { BrandComponent } from './brand/brand.component';
 import { SummaryComponent } from './summary/summary.component';
+import {NgSelectModule} from '@ng-select/ng-select';
+import { PapaParseModule } from 'ngx-papaparse';
+import { ConsumptionService } from './consumption.service';
 
 @NgModule({
     declarations: [
@@ -24,12 +27,14 @@ import { SummaryComponent } from './summary/summary.component';
     imports: [
         BrowserAnimationsModule,
         BrowserModule,
+        NgSelectModule,
         FormsModule,
         HttpModule,
         ClarityModule,
+        PapaParseModule,
         ROUTING
     ],
-    providers: [],
+    providers: [ConsumptionService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
