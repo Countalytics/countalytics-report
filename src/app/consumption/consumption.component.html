@@ -5,8 +5,8 @@
       <div class="container-fluid">
         <div class='row'>
           <div class="col-md-3">
-            <ng-select [items]="items" placeholder="Sort By"
-           [(ngModel)]="sort">
+            <ng-select [items]="" placeholder="Date"
+           >
          </ng-select>
           </div>
           <div class="col-md-3">
@@ -63,9 +63,9 @@
             </div>
           </div>
           <div class="col-md-3">
-            <div class="card">
+            <div class="card" >
               <div class="card-block">
-                <h2>40</h2>
+                <h2 style="color: #00b862;">40</h2>
                   Initial Count
                   <br /><br />
               </div>
@@ -74,7 +74,7 @@
           <div class="col-md-3">
             <div class="card">
               <div class="card-block">
-                <h2>30</h2>
+                <h2 style="color: #2196f3;">30</h2>
                   Final Count
                   <br /><br />
               </div>
@@ -83,7 +83,7 @@
           <div class="col-md-3">
             <div class="card">
               <div class="card-block">
-                <h2>25%</h2>
+                <h2 style="color: #ff5722;">25%</h2>
                   Consumption
                   <br /><br />
               </div>
@@ -97,10 +97,10 @@
         <div class="row">
           <div class="col-md-12">
             <div class="card">
-              <div class="card-block" style="height: 400px;">
+              <div class="card-block" style="height: 500px;">
                 <h4 class="card-title">Consumption % by Brand</h4>
                 <hr />
-                  <br /><br />
+                <app-barchart class="center-align"></app-barchart>
               </div>
             </div>
           </div>
