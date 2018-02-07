@@ -15,6 +15,9 @@ export class ConsumptionComponent implements OnInit {
   initialCount;
   finalCount;
   consumption;
+  dept;
+  arr;
+  flightNum;
 
   constructor(private cservice: ConsumptionService) { }
 
