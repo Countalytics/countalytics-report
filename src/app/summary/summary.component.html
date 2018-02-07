@@ -1,3 +1,73 @@
-<p>
-  summary works!
-</p>
+<br /><br /><br />
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-1">
+
+    </div>
+    <div class="col-md-10">
+      <div class="card">
+        <div class="card-block" style="height: auto;">
+          <h4 class="card-title">Alcohol Consumption Distribution By Brand</h4>
+          <hr />
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-7">
+                <br />
+                  <canvas id="pieChart" height="150" width="250"></canvas>
+                  <br />
+              </div>
+              <div class="col-md-5">
+                <table class="table table-compact table-noborder" style="margin-top: 0px; margin-bottom: 10px;">
+            <thead>
+                <tr>
+                    <th class="left">Brand</th>
+                    <th>Consumed Units</th>
+                    <th>Consumed %</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let brand of brandTable">
+                    <td class="left">{{ brand.item }}</td>
+                    <td>{{ brand.consumption }}</td>
+                    <td>{{ brand.percent }}</td>
+                </tr>
+            </tbody>
+        </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-1">
+
+    </div>
+    <div class="col-md-10">
+      <div class="card">
+        <div class="card-block" style="height: 400px;">
+          <h4 class="card-title">Top 10 Flights by Consumption %</h4>
+          <hr />
+          <br /><br />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-1">
+
+    </div>
+    <div class="col-md-10">
+      <div class="card">
+        <div class="card-block" style="height: 400px;">
+          <h4 class="card-title">Bottom 10 Flights by Consumption %</h4>
+          <hr />
+          <br /><br />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

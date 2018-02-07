@@ -63,7 +63,7 @@ export class BarchartComponent implements OnInit, AfterViewInit {
       title: {
         display: true,
         fontFamily:"Open Sans",
-        text: "Wine consumption of all flights by brand ",
+        text: "Alcohol consumption of all flights by brand ",
         fontStyle: "normal",
         fontSize: "14"
       },

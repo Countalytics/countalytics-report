@@ -88,6 +88,7 @@ export class ConsumptionService {
       let itemCountObj = {};
       for (let item of this.itemsList) {
         let itemObj = {};
+        itemObj["item"] = item;
         itemObj["initial"] = 0;
         itemObj["final"] = 0;
         itemObj["consumption"] = 0;
