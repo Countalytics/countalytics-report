@@ -6,28 +6,28 @@
         <div class='row'>
           <div class="col-md-3">
             <ng-select [items]="" placeholder="Date"
-           >
-         </ng-select>
-          </div>
-          <div class="col-md-3">
-            <ng-select [items]="deptChoices" placeholder="Flight From"
-           [(ngModel)]="dept">
-         </ng-select>
-          </div>
-          <div class="col-md-3">
-            <ng-select [items]="arrChoices" placeholder="Flight To"
-           [(ngModel)]="arr">
-         </ng-select>
-          </div>
-          <div class="col-md-3">
-            <ng-select [items]="flightNumChoices" placeholder="Flight No."
-           [(ngModel)]="flightNum">
-         </ng-select>
-          </div>
+            >
+          </ng-select>
         </div>
+        <div class="col-md-3">
+          <ng-select [items]="deptChoices" placeholder="Flight From"
+          [(ngModel)]="dept">
+        </ng-select>
       </div>
+      <div class="col-md-3">
+        <ng-select [items]="arrChoices" placeholder="Flight To"
+        [(ngModel)]="arr">
+      </ng-select>
     </div>
+    <div class="col-md-3">
+      <ng-select [items]="flightNumChoices" placeholder="Flight No."
+      [(ngModel)]="flightNum">
+    </ng-select>
   </div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 
@@ -43,7 +43,7 @@
               <div class="card-block" style="height: 400px;">
                 <h4 class="card-title">Flight Map</h4>
                 <hr />
-                  <br /><br />
+                <br /><br />
               </div>
             </div>
           </div>
@@ -57,8 +57,8 @@
             <div class="card">
               <div class="card-block">
                 <h2>2</h2>
-                  Flight Data Points
-                  <br /><br />
+                Flight Data Points
+                <br /><br />
               </div>
             </div>
           </div>
@@ -66,8 +66,8 @@
             <div class="card" >
               <div class="card-block">
                 <h2 style="color: #00b862;">40</h2>
-                  Initial Count
-                  <br /><br />
+                Initial Count
+                <br /><br />
               </div>
             </div>
           </div>
@@ -75,8 +75,8 @@
             <div class="card">
               <div class="card-block">
                 <h2 style="color: #2196f3;">30</h2>
-                  Final Count
-                  <br /><br />
+                Final Count
+                <br /><br />
               </div>
             </div>
           </div>
@@ -84,8 +84,8 @@
             <div class="card">
               <div class="card-block">
                 <h2 style="color: #ff5722;">25%</h2>
-                  Consumption
-                  <br /><br />
+                Consumption
+                <br /><br />
               </div>
             </div>
           </div>
@@ -112,11 +112,25 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-block" style="height: 400px;">
-                <h4 class="card-title">Flight Consumption Information</h4>
+                <h4 class="card-title">Consumption Data</h4>
                 <hr />
-                  <br /><br />
+              
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <!-- <div class="card">
+              <div class="card-block" style="height: 400px;">
+                <h4 class="card-title">Consumption Data</h4>
+                <hr /> -->
+                <app-table></app-table>
+              <!-- </div>
+            </div> -->
           </div>
         </div>
       </div>

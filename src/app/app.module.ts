@@ -15,6 +15,8 @@ import {NgSelectModule} from '@ng-select/ng-select';
 import { PapaParseModule } from 'ngx-papaparse';
 import { ConsumptionService } from './consumption.service';
 import { BarchartComponent } from './consumption/barchart/barchart.component';
+import { TableComponent } from './consumption/table/table.component';
+import { ConnectionmapComponent } from './consumption/connectionmap/connectionmap.component';
 
 @NgModule({
     declarations: [
@@ -24,7 +26,9 @@ import { BarchartComponent } from './consumption/barchart/barchart.component';
         ConsumptionComponent,
         BrandComponent,
         SummaryComponent,
-        BarchartComponent
+        BarchartComponent,
+        TableComponent,
+        ConnectionmapComponent
     ],
     imports: [
         BrowserAnimationsModule,
