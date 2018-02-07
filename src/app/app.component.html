@@ -1,0 +1,19 @@
+<clr-main-container>
+  <clr-header class="header-6">
+    <div class="branding">
+      <a href="#" class="nav-link">
+        <span class="clr-icon clr-clarity-logo"></span>
+        <!-- <span class="title"></span> -->
+      </a>
+    </div>
+      <div class="header-nav" [clr-nav-level]="1">
+          <a class="nav-link" href="#" [routerLink]="['/consumption']" routerLinkActive="active"><span class="nav-text">Consumption</span></a>
+          <a class="nav-link" href="#" [routerLink]="['/brand']" routerLinkActive="active"><span class="nav-text">Brand</span></a>
+          <a class="nav-link" href="#" [routerLink]="['/summary']" routerLinkActive="active"><span class="nav-text">Summary</span></a>
+      </div>
+    <div class="header-actions">
+    </div>
+  </clr-header>
+<span class="content"><router-outlet></router-outlet>
+  <br /><br />
+</span>

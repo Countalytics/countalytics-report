@@ -1,0 +1,58 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+
+html {
+  font-size: 25px;
+  background-color: rgb(243,245, 247);
+}
+
+.content {
+  height: 100vh;
+  background-color: rgb(243,245, 247);
+}
+
+h1, h2, h3, h4, h5, h6, p, a, button, body {
+  font-family: 'Open Sans', 'Helvetica';
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #D8D8D8;
+    margin: 1em 0;
+    padding: 0;
+}
+
+.center-align {
+  text-align: center;
+}
+
+
+.card-title {
+  color: grey;
+}
+
+.card {
+  box-shadow: 0 0.06rem 0 0 #d7d7d7;
+}
+
+.header {
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  z-index: 99;
+}
+
+.settings-bar {
+  overflow: hidden;
+  padding-top: 80px;
+  padding-bottom: 20px;
+  background-color: #C92100;
+  color: white;
+  border-bottom: 1px solid #D8D8D8;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 89;
+}
