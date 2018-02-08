@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, OnChanges } from '@angular/core';
 import { ConsumptionService } from '../consumption.service';
 
 
@@ -47,14 +47,7 @@ export class ConsumptionComponent implements OnInit {
     this.cservice.getFlightDates().subscribe((data) => {
       this.flightDateChoices = Array.from(data.keys());
     });
-
-    this.cservice.getOverviewFigures().subscribe((data) => {
-      this.flightCount = data["flightNum"];
-      this.initialCount = data["initialCount"];
-      this.finalCount = data["finalCount"];
-      this.consumption = data["consumption"];
-    });
-
+    this.updateOverview();
   }
 
   onFilter(event) {
@@ -65,16 +58,16 @@ export class ConsumptionComponent implements OnInit {
       arr: this.arr,
       flightNum: this.flightNum
     };
+    this.updateOverview();
   }
 
-  // onFilter(event) {
-  //   console.log(this.date, this.dept, this.arr, this.flightNum);
-  //   this.filters = {
-  //     date: (this.date) ? this.date : "",
-  //     dept: (this.dept) ? this.dept : "",
-  //     arr: (this.arr) ? this.arr : "",
-  //     flightNum: (this.flightNum) ? this.arr
-  //   };
-  // }
+  updateOverview() {
+    this.cservice.getOverviewFigures(this.filters).subscribe((data) => {
+      this.flightCount = data["flightNum"];
+      this.initialCount = data["initialCount"];
+      this.finalCount = data["finalCount"];
+      this.consumption = data["consumption"];
+    });
+  }
 
 }

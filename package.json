@@ -47,6 +47,7 @@
   "devDependencies": {
     "@angular/cli": "~1.6.1",
     "@angular/compiler-cli": "~5.0.0",
+    "@types/chartjs": "0.0.31",
     "@types/core-js": "~0.9.42",
     "@types/jasmine": "^2.5.53",
     "@types/jasminewd2": "^2.0.2",

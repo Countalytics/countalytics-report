@@ -68,9 +68,9 @@ export class ConsumptionService {
     });
   }
 
-  getOverviewFigures() {
+  getOverviewFigures(filters) {
     return this.getData().map(data => {
-      let rows = data.json();
+      let rows = this.filterData(filters, data.json());
       let dataObj = {};
 
       let flights = new Set([]);
@@ -96,9 +96,9 @@ export class ConsumptionService {
     });
   }
 
-  getItemCount() {
+  getItemCount(filters) {
     return this.getData().map(data => {
-      let rows = data.json();
+      let rows = this.filterData(filters, data.json());
       let itemCountObj = {};
       for (let item of this.itemsList) {
         let itemObj = {};
@@ -117,15 +117,16 @@ export class ConsumptionService {
     });
   }
 
-  getConsumptionData() {
+  getConsumptionData(filters) {
     return this.getData().map(data => {
-      return this.squashConsumption(data);
+      let filtered = this.filterData(filters, data.json());
+      return this.squashConsumption(filtered);
     });
   }
 
   getTopFlights() {
     return this.getData().map(data => {
-      let consumptionData = this.squashConsumption(data);
+      let consumptionData = this.squashConsumption(data.json());
       consumptionData.sort((a,b) => {
         return b["Totals"] - a["Totals"];
       });
@@ -135,7 +136,7 @@ export class ConsumptionService {
 
   getBottomFlights() {
     return this.getData().map(data => {
-      let consumptionData = this.squashConsumption(data);
+      let consumptionData = this.squashConsumption(data.json());
       consumptionData.sort((a,b) => {
         return a["Totals"] - b["Totals"];
       });

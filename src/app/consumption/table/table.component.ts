@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { ConsumptionService } from '../../consumption.service';
 
 @Component({
@@ -6,18 +6,23 @@ import { ConsumptionService } from '../../consumption.service';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, OnChanges {
+  @Input() filters;
 
   flights = [];
 
   constructor(private cservice: ConsumptionService) { }
 
   ngOnInit() {
-    // this.cservice.getRawData().subscribe((data) => {
-    //   this.flights = data;
-    // });
+    this.updateTable();
+  }
 
-    this.cservice.getConsumptionData().subscribe((data) => {
+  ngOnChanges() {
+    this.updateTable();
+  }
+
+  updateTable() {
+    this.cservice.getConsumptionData(this.filters).subscribe((data) => {
       this.flights = data;
     });
   }

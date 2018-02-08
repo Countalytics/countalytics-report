@@ -25,7 +25,6 @@ export class ConnectionmapComponent implements OnInit, OnChanges {
   getFlightData() {
     this.cservice.getFlightConnection(this.filters).subscribe((consumptionData) => {
       this.cservice.getAirportData().subscribe((airportJSON) => {
-        console.log(consumptionData);
         let airports = airportJSON.json();
         let airportDict = {};
         for (let airport of airports) {

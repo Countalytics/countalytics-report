@@ -46,7 +46,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="card">
-              <div class="card-block" style="height: auto;">
+              <div class="card-block" style="height: auto; min-height: 400px;">
                 <h4 class="card-title">Flight Map</h4>
                 <hr />
                 <app-connectionmap [filters]="filters"></app-connectionmap>
@@ -106,7 +106,7 @@
               <div class="card-block" style="height: auto;">
                 <h4 class="card-title">Consumption Count by Brand</h4>
                 <hr />
-                <app-barchart class="center-align"></app-barchart>
+                <app-barchart [filters]="filters" class="center-align"></app-barchart>
               </div>
             </div>
           </div>
@@ -134,7 +134,7 @@
               <div class="card-block" style="height: 400px;">
                 <h4 class="card-title">Consumption Data</h4>
                 <hr /> -->
-                <app-table></app-table>
+                <app-table [filters]="filters"></app-table>
               <!-- </div>
             </div> -->
           </div>
