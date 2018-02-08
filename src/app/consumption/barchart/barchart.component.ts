@@ -21,14 +21,12 @@ export class BarchartComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.cservice.getItemCount().subscribe((data) => {
-      console.log(data);
       for (let item of this.itemList) {
           this.initialList.push(data[item]["initial"]);
           this.finalList.push(data[item]["final"]);
           this.consumptionList.push(data[item]["consumption"]);
       }
       this.renderChart();
-      console.log(this.finalList);
     });
   }
   ngAfterViewInit() {}

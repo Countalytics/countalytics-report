@@ -24,17 +24,14 @@ export class ConsumptionComponent implements OnInit {
   ngOnInit() {
 
     this.cservice.getDeptTypes().subscribe((data) => {
-      console.log(Array.from(data.keys()));
       this.deptChoices = Array.from(data.keys());
     });
 
     this.cservice.getArrTypes().subscribe((data) => {
-      console.log(Array.from(data.keys()));
       this.arrChoices = Array.from(data.keys());
     });
 
     this.cservice.getFlightNumTypes().subscribe((data) => {
-      console.log(Array.from(data.keys()));
       this.flightNumChoices = Array.from(data.keys());
     });
 

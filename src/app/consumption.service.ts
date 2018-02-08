@@ -18,6 +18,10 @@ export class ConsumptionService {
     return this.http.get("./assets/consumption.json");
   }
 
+  public getAirportData(): Observable<any> {
+    return this.http.get("./assets/airports.json");
+  }
+
   getRawData() {
     return this.getData().map(data => {
       return data.json();
@@ -99,7 +103,6 @@ export class ConsumptionService {
         }
         itemCountObj[item] = itemObj;
       }
-      console.log(itemCountObj);
       return itemCountObj;
     });
   }
@@ -113,7 +116,6 @@ export class ConsumptionService {
   getTopFlights() {
     return this.getData().map(data => {
       let consumptionData = this.squashConsumption(data);
-      console.log(consumptionData);
       consumptionData.sort((a,b) => {
         return b["Totals"] - a["Totals"];
       });
@@ -124,13 +126,35 @@ export class ConsumptionService {
   getBottomFlights() {
     return this.getData().map(data => {
       let consumptionData = this.squashConsumption(data);
-      console.log(consumptionData);
       consumptionData.sort((a,b) => {
         return a["Totals"] - b["Totals"];
       });
       return consumptionData.slice(0,10);
     });
   }
+
+  getFlightConnection() {
+    return this.getData().map(data => {
+      let consumptionData = this.squashConsumption(data);
+      return consumptionData;
+    });
+  }
+  //
+  // getFlightConnection() {
+  //   return this.getData().map(data => {
+  //     let consumptionData = this.squashConsumption(data);
+  //     this.getAirportData().subscribe((res) => {
+  //       this.papa.parse(res.text(), {
+  //           complete: (results, file) => {
+  //               let airport =
+  //               for (let row of consumptionData) {
+  //                 console.log(row);
+  //                 row["latitude"]
+  //               }
+  //           }, header: true});
+  //     });
+  //   });
+  // }
 
   calcConsumption(initial, final) {
     return ((1 - final / initial) * 100).toFixed(1);
