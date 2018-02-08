@@ -106,34 +106,60 @@ export class ConsumptionService {
 
   getConsumptionData() {
     return this.getData().map(data => {
-      let consData = [];
-      let rows = data.json();
-      for (let i=0; i<rows.length; i+=2) { // assuming that list is in order (data point 1,2 consecutively)
-        let consObj = {};
+      return this.squashConsumption(data);
+    });
+  }
 
-        // get flight details
-        for (let attr of this.attrList) {
-          consObj[attr] = rows[i][attr];
-        }
-        // get initial and final count, % consumption
-        consObj["Initial"] = rows[i]["Totals"];
-        consObj["Final"] = rows[i+1]["Totals"];
-        consObj["Totals"] = consObj["Initial"] - consObj["Final"];
-        consObj["Consumption"] = this.calcConsumption(consObj["Initial"], consObj["Final"]);
+  getTopFlights() {
+    return this.getData().map(data => {
+      let consumptionData = this.squashConsumption(data);
+      console.log(consumptionData);
+      consumptionData.sort((a,b) => {
+        return b["Totals"] - a["Totals"];
+      });
+      return consumptionData.slice(0,10);
+    });
+  }
 
-        // get consumption of items
-        for (let item of this.itemsList) {
-          consObj[item] = +rows[i][item] - +rows[i+1][item];
-        }
-
-        consData.push(consObj);
-      }
-      return consData;
+  getBottomFlights() {
+    return this.getData().map(data => {
+      let consumptionData = this.squashConsumption(data);
+      console.log(consumptionData);
+      consumptionData.sort((a,b) => {
+        return a["Totals"] - b["Totals"];
+      });
+      return consumptionData.slice(0,10);
     });
   }
 
   calcConsumption(initial, final) {
     return ((1 - final / initial) * 100).toFixed(1);
+  }
+
+  squashConsumption(data) {
+    let consData = [];
+    let rows = data.json();
+    for (let i=0; i<rows.length; i+=2) { // assuming that list is in order (data point 1,2 consecutively)
+      let consObj = {};
+
+      // get flight details
+      for (let attr of this.attrList) {
+        consObj[attr] = rows[i][attr];
+      }
+      // get initial and final count, % consumption
+      consObj["Initial"] = rows[i]["Totals"];
+      consObj["Final"] = rows[i+1]["Totals"];
+      consObj["Totals"] = consObj["Initial"] - consObj["Final"];
+      consObj["Consumption"] = this.calcConsumption(consObj["Initial"], consObj["Final"]);
+
+      // get consumption of items
+      for (let item of this.itemsList) {
+        consObj[item] = +rows[i][item] - +rows[i+1][item];
+      }
+
+      consData.push(consObj);
+    }
+    return consData;
   }
 
 }

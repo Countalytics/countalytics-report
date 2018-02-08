@@ -11,12 +11,12 @@
           <hr />
           <div class="container-fluid">
             <div class="row">
-              <div class="col-md-7">
+              <div class="col-md-6">
                 <br />
                   <canvas id="pieChart" height="150" width="250"></canvas>
                   <br />
               </div>
-              <div class="col-md-5">
+              <div class="col-md-6">
                 <table class="table table-compact table-noborder" style="margin-top: 0px; margin-bottom: 10px;">
             <thead>
                 <tr>
@@ -27,7 +27,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let brand of brandTable">
-                    <td class="left">{{ brand.item }}</td>
+                    <td class="left"><clr-icon shape="circle" [style.color]="brand.color" class="is-solid"></clr-icon> &nbsp; {{ brand.item }}</td>
                     <td>{{ brand.consumption }}</td>
                     <td>{{ brand.percent }}</td>
                 </tr>
@@ -48,10 +48,10 @@
     </div>
     <div class="col-md-10">
       <div class="card">
-        <div class="card-block" style="height: 400px;">
-          <h4 class="card-title">Top 10 Flights by Consumption %</h4>
+        <div class="card-block" style="height: auto;">
+          <h4 class="card-title">Top 10 Flights by Consumption Count</h4>
           <hr />
-          <br /><br />
+          <canvas id="top10Chart" width="400" height="200"></canvas>
         </div>
       </div>
     </div>
@@ -62,10 +62,10 @@
     </div>
     <div class="col-md-10">
       <div class="card">
-        <div class="card-block" style="height: 400px;">
-          <h4 class="card-title">Bottom 10 Flights by Consumption %</h4>
+        <div class="card-block" style="height: auto;">
+          <h4 class="card-title">Bottom 10 Flights by Consumption Count</h4>
           <hr />
-          <br /><br />
+          <canvas id="bottom10Chart" width="400" height="200"></canvas>
         </div>
       </div>
     </div>
