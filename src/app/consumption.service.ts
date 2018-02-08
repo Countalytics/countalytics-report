@@ -143,11 +143,26 @@ export class ConsumptionService {
     });
   }
 
-  getFlightConnection() {
+  getFlightConnection(filters) {
+    console.log(filters);
     return this.getData().map(data => {
-      let consumptionData = this.squashConsumption(data);
+      let filtered = this.filterData(filters, data.json());
+      let consumptionData = this.squashConsumption(filtered);
       return consumptionData;
     });
+  }
+
+  filterData(filters, data) {
+    let filtered = data.filter((row) => {
+      let isFlightNum = (filters.flightNum) ? (filters.flightNum === row["Flt #"]) : true;
+      let isDate = (filters.date) ? (filters.date === row["Date"]) : true;
+      let isArr = (filters.arr) ? (filters.arr === row["Arvl"]) : true;
+      let isDept = (filters.dept) ? (filters.dept === row["Dept"]) : true;
+      if (isFlightNum && isDate && isArr && isDept) {
+        return row;
+      }
+    });
+    return filtered;
   }
   //
   // getFlightConnection() {
@@ -170,9 +185,8 @@ export class ConsumptionService {
     return ((1 - final / initial) * 100).toFixed(1);
   }
 
-  squashConsumption(data) {
+  squashConsumption(rows) {
     let consData = [];
-    let rows = data.json();
     for (let i=0; i<rows.length; i+=2) { // assuming that list is in order (data point 1,2 consecutively)
       let consObj = {};
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { ConsumptionService } from '../../consumption.service';
 // import { PlotlyStatic } from '@types/plotly.js';
 declare var Plotly: any;
@@ -8,14 +8,24 @@ declare var Plotly: any;
   templateUrl: './connectionmap.component.html',
   styleUrls: ['./connectionmap.component.scss']
 })
-export class ConnectionmapComponent implements OnInit {
+export class ConnectionmapComponent implements OnInit, OnChanges {
   flightPairData;
+  @Input() filters;
 
   constructor(private cservice: ConsumptionService) { }
 
   ngOnInit() {
-    this.cservice.getFlightConnection().subscribe((consumptionData) => {
+    this.getFlightData();
+  }
+
+  ngOnChanges() {
+    this.getFlightData();
+  }
+
+  getFlightData() {
+    this.cservice.getFlightConnection(this.filters).subscribe((consumptionData) => {
       this.cservice.getAirportData().subscribe((airportJSON) => {
+        console.log(consumptionData);
         let airports = airportJSON.json();
         let airportDict = {};
         for (let airport of airports) {
@@ -96,7 +106,7 @@ export class ConnectionmapComponent implements OnInit {
     xaxis : {autorange: true}
   };
   let ctx = document.getElementById("myDiv");
-  Plotly.plot(ctx, data, layout, {showLink: false, displayModeBar: false, scrollZoom: false});
+  Plotly.newPlot(ctx, data, layout, {showLink: false, displayModeBar: false, scrollZoom: false});
 
 }
 

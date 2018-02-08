@@ -1,26 +1,39 @@
 <div class="container-fluid" class="settings-bar">
   <div class="row">
     <div class="col-md-1"></div>
-    <div class="col-md-2">
-      <ng-select [items]="flightDateChoices" placeholder="Date"
-      [(ngModel)]="date"
-      >
+    <div class="col-md-10">
+      <div class="container-fluid">
+        <div class='row'>
+          <div class="col-md-3">
+            <ng-select [items]="flightDateChoices" placeholder="Date"
+            (clear)="onFilter($event)"
+            (add)="onFilter($event)" [(ngModel)]="date"
+            >
+          </ng-select>
+        </div>
+        <div class="col-md-3">
+          <ng-select [items]="deptChoices" placeholder="Flight From"
+          (clear)="onFilter($event)"
+          (add)="onFilter($event)"
+          [(ngModel)]="dept">
+        </ng-select>
+      </div>
+      <div class="col-md-3">
+        <ng-select [items]="arrChoices" placeholder="Flight To"
+           (clear)="onFilter($event)"
+           (add)="onFilter($event)"
+           [(ngModel)]="arr">
+      </ng-select>
+    </div>
+    <div class="col-md-3">
+      <ng-select [items]="flightNumChoices" placeholder="Flight No."
+      (clear)="onFilter($event)"
+      (add)="onFilter($event)"
+      [(ngModel)]="flightNum">
     </ng-select>
   </div>
-  <div class="col-md-2">
-    <ng-select [items]="deptChoices" placeholder="Flight From"
-    [(ngModel)]="dept">
-  </ng-select>
 </div>
-<div class="col-md-2">
-  <ng-select [items]="arrChoices" placeholder="Flight To"
-  [(ngModel)]="arr">
-</ng-select>
 </div>
-<div class="col-md-2">
-  <ng-select [items]="flightNumChoices" placeholder="Flight No."
-  [(ngModel)]="flightNum">
-</ng-select>
 </div>
 </div>
 </div>
@@ -36,7 +49,7 @@
               <div class="card-block" style="height: auto;">
                 <h4 class="card-title">Flight Map</h4>
                 <hr />
-                <app-connectionmap></app-connectionmap>
+                <app-connectionmap [filters]="filters"></app-connectionmap>
               </div>
             </div>
           </div>

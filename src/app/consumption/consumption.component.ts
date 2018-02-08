@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { ConsumptionService } from '../consumption.service';
 
 
@@ -20,10 +20,17 @@ export class ConsumptionComponent implements OnInit {
   arr;
   date;
   flightNum;
+  @Output() filters;
 
   constructor(private cservice: ConsumptionService) { }
 
   ngOnInit() {
+    this.filters = {
+      date: this.date,
+      dept: this.dept,
+      arr: this.arr,
+      flightNum: this.flightNum
+    };
 
     this.cservice.getDeptTypes().subscribe((data) => {
       this.deptChoices = Array.from(data.keys());
@@ -49,5 +56,25 @@ export class ConsumptionComponent implements OnInit {
     });
 
   }
+
+  onFilter(event) {
+    console.log(this.date, this.dept, this.arr, this.flightNum);
+    this.filters = {
+      date: this.date,
+      dept: this.dept,
+      arr: this.arr,
+      flightNum: this.flightNum
+    };
+  }
+
+  // onFilter(event) {
+  //   console.log(this.date, this.dept, this.arr, this.flightNum);
+  //   this.filters = {
+  //     date: (this.date) ? this.date : "",
+  //     dept: (this.dept) ? this.dept : "",
+  //     arr: (this.arr) ? this.arr : "",
+  //     flightNum: (this.flightNum) ? this.arr
+  //   };
+  // }
 
 }
