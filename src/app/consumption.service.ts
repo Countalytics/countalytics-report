@@ -58,6 +58,16 @@ export class ConsumptionService {
     });
   }
 
+  getFlightDates() {
+    return this.getData().map(data => {
+      let flightDates = new Set([]);
+      for (let row of data.json()) {
+        flightDates.add(row["Date"]);
+      }
+      return flightDates;
+    });
+  }
+
   getOverviewFigures() {
     return this.getData().map(data => {
       let rows = data.json();

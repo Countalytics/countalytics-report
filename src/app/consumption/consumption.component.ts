@@ -11,12 +11,14 @@ export class ConsumptionComponent implements OnInit {
   deptChoices = [];
   arrChoices = [];
   flightNumChoices = [];
+  flightDateChoices = [];
   flightCount;
   initialCount;
   finalCount;
   consumption;
   dept;
   arr;
+  date;
   flightNum;
 
   constructor(private cservice: ConsumptionService) { }
@@ -33,6 +35,10 @@ export class ConsumptionComponent implements OnInit {
 
     this.cservice.getFlightNumTypes().subscribe((data) => {
       this.flightNumChoices = Array.from(data.keys());
+    });
+
+    this.cservice.getFlightDates().subscribe((data) => {
+      this.flightDateChoices = Array.from(data.keys());
     });
 
     this.cservice.getOverviewFigures().subscribe((data) => {

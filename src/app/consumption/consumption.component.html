@@ -1,31 +1,26 @@
 <div class="container-fluid" class="settings-bar">
   <div class="row">
     <div class="col-md-1"></div>
-    <div class="col-md-10">
-      <div class="container-fluid">
-        <div class='row'>
-          <div class="col-md-3">
-            <ng-select [items]="" placeholder="Date"
-            >
-          </ng-select>
-        </div>
-        <div class="col-md-3">
-          <ng-select [items]="deptChoices" placeholder="Flight From"
-          [(ngModel)]="dept">
-        </ng-select>
-      </div>
-      <div class="col-md-3">
-        <ng-select [items]="arrChoices" placeholder="Flight To"
-        [(ngModel)]="arr">
-      </ng-select>
-    </div>
-    <div class="col-md-3">
-      <ng-select [items]="flightNumChoices" placeholder="Flight No."
-      [(ngModel)]="flightNum">
+    <div class="col-md-2">
+      <ng-select [items]="flightDateChoices" placeholder="Date"
+      [(ngModel)]="date"
+      >
     </ng-select>
   </div>
+  <div class="col-md-2">
+    <ng-select [items]="deptChoices" placeholder="Flight From"
+    [(ngModel)]="dept">
+  </ng-select>
 </div>
+<div class="col-md-2">
+  <ng-select [items]="arrChoices" placeholder="Flight To"
+  [(ngModel)]="arr">
+</ng-select>
 </div>
+<div class="col-md-2">
+  <ng-select [items]="flightNumChoices" placeholder="Flight No."
+  [(ngModel)]="flightNum">
+</ng-select>
 </div>
 </div>
 </div>
