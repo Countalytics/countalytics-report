@@ -28,7 +28,14 @@ export class SummaryComponent implements OnInit {
   constructor(private cservice: ConsumptionService) { }
 
   ngOnInit() {
-    this.cservice.getItemCount().subscribe((data) => {
+
+    let mockFilter = {
+      flightNum: null,
+      dept: null,
+      arr: null,
+      date: null
+    };
+    this.cservice.getItemCount(mockFilter).subscribe((data) => {
       let total = 0;
       for (let item of this.itemList) {
         total += data[item]["consumption"];
