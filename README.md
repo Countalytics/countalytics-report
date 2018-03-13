@@ -1,7 +1,7 @@
 ## Instructions
 1. Save Excel data as CSV in the following format ([example](docs/assets/consumption.csv)).
-2. Convert CSV to JSON using this tool (https://www.csvjson.com/csv2json), copy-all JSON data and paste into a file called 'consumption.json'.
-3. Delete old consumption.json ([folder](docs/assets/)).
+2. Convert CSV to JSON using this tool (https://www.csvjson.com/csv2json), copy-all JSON data and paste into a file called `consumption.json`.
+3. Delete old consumption.json in this [folder](docs/assets/).
 3. Upload the new consumption.json file you created into this `docs/assets/` folder.
 4. Clear browser history in last hour / wait a while for the changes to appear.
 
