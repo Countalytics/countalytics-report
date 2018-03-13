@@ -5,6 +5,6 @@
 3. Upload the new consumption.json file you created into this same `docs/assets/` [folder](docs/assets/).
 4. Clear browser history in last hour / wait a while for the changes to appear.
 
-### Notes
-- Follow the CSV format strictly to ensure all fields and filters work properly.
+### Note
+- Follow the CSV format and headers strictly (including alcohol type) to ensure all fields and filters work properly.
 - Flight filter would show error if selected flight does not correspond with the other filters selected (e.g. ATL, LAX, DL 0843 would lead to an error).
